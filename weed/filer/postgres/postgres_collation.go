@@ -61,6 +61,9 @@ func nameColumnCollation(db *sql.DB) (collation string, isBinary bool, err error
 // isByteOrderedCollation reports whether a Postgres locale sorts by byte value
 // (C, POSIX, C.UTF-8) rather than locale order (en_US.UTF-8, ICU, ...).
 func isByteOrderedCollation(name string) bool {
+	if strings.HasSuffix(strings.ToLower(name), "-x-icu") {
+		return true
+	}
 	switch strings.ToLower(strings.TrimSpace(name)) {
 	case "c", "posix", "c.utf-8", "c.utf8":
 		return true
