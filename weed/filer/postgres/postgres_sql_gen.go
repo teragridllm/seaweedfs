@@ -53,7 +53,7 @@ func (gen *SqlGenPostgres) nameExpr() string {
 	if gen.ForceBinaryCollation {
 		return `name COLLATE "C"`
 	}
-	return "name"
+	return "LOWER(name)"
 }
 
 func (gen *SqlGenPostgres) GetSqlListExclusive(tableName string) string {
