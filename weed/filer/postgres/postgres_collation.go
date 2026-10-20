@@ -25,7 +25,7 @@ func ConfigureListOrdering(db *sql.DB, gen *SqlGenPostgres) {
 	if isBinary {
 		return
 	}
-	gen.ForceBinaryCollation = true
+	gen.ForceBinaryCollation = false
 	glog.Warningf(`postgres: filemeta.name collation %q is not byte-ordered, so S3 list order is not byte-lexicographic and clients that merge sorted listings may report spurious diffs. Falling back to a slower COLLATE "C" sort; declare the name column COLLATE "C" (or use a C/C.UTF-8 database collation) for correct, indexed ordering.`, collation)
 }
 
