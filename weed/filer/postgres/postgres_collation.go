@@ -62,7 +62,7 @@ func nameColumnCollation(db *sql.DB) (collation string, isBinary bool, err error
 // (C, POSIX, C.UTF-8) rather than locale order (en_US.UTF-8, ICU, ...).
 func isByteOrderedCollation(name string) bool {
 	switch strings.ToLower(strings.TrimSpace(name)) {
-	case "c", "posix", "c.utf-8", "c.utf8":
+	case "c", "c.utf-8", "c.utf8":
 		return true
 	}
 	return false
